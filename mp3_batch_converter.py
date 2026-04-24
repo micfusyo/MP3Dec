@@ -29,6 +29,7 @@ from PyQt6.QtWidgets import (
 
 APP_TITLE = "MP3 批量轉換工具"
 APP_DIR_NAME = "MP3BatchConverter"
+APP_VERSION = "1.0.0"
 SUPPORTED_EXTENSIONS = {".mp3", ".wav", ".flac", ".m4a"}
 SAMPLE_RATES = ["22050", "32000", "44100", "48000"]
 BIT_RATES = ["32k", "64k", "96k", "128k", "160k", "192k", "256k", "320k"]
@@ -226,7 +227,7 @@ class ConversionWorker(QObject):
 class ConverterWindow(QMainWindow):
     def __init__(self) -> None:
         super().__init__()
-        self.setWindowTitle(APP_TITLE)
+        self.setWindowTitle(f"{APP_TITLE} v{APP_VERSION}")
         self.resize(900, 680)
 
         self.config = load_config()
@@ -494,6 +495,7 @@ class ConverterWindow(QMainWindow):
 def main() -> None:
     app = QApplication(sys.argv)
     app.setApplicationName(APP_TITLE)
+    app.setApplicationVersion(APP_VERSION)
     window = ConverterWindow()
     window.show()
     sys.exit(app.exec())

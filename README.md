@@ -2,6 +2,12 @@
 
 一個以 Python 與 PyQt6 撰寫的 macOS GUI 批量音訊轉檔工具，適合把音樂檔轉成較低取樣率與位元率的 MP3，以配合特定播放裝置使用。
 
+目前版本：`1.0.0`
+
+## 畫面預覽
+
+![MP3BatchConverter Screenshot](assets/mp3batchconverter-screenshot.png)
+
 ## 功能
 
 - 以圖形介面選擇來源資料夾與目的資料夾
@@ -79,7 +85,14 @@ python3 build_dmg.py
 
 - `mp3_batch_converter.py`：主程式
 - `build_dmg.py`：建立美化版 DMG 的腳本
+- `CHANGELOG.md`：版本更新紀錄
 - `README.md`：使用說明
+
+## 發佈
+
+- GitHub Repo：[micfusyo/MP3Dec](https://github.com/micfusyo/MP3Dec)
+- GitHub Releases：[micfusyo/MP3Dec/releases](https://github.com/micfusyo/MP3Dec/releases)
+- 建議下載：GitHub Releases 內的 `.dmg`
 
 ## 注意事項
 
