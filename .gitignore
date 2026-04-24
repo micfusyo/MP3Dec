@@ -1,0 +1,11 @@
+.DS_Store
+.pycache/
+.pyinstaller/
+build/
+dist/
+logs/
+config.json
+*.pyc
+*.pyo
+*.pyd
+*.spec
