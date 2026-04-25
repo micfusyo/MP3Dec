@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.0.1 - 2026-04-25
+
+- 修正從 `.app` 或 `.dmg` 安裝後啟動時，因 Finder 環境變數 `PATH` 不完整而找不到 Homebrew `ffmpeg` 的問題
+- 新增對 macOS 常見 `ffmpeg` 安裝位置的主動搜尋，包括 `/opt/homebrew/bin/ffmpeg` 與 `/usr/local/bin/ffmpeg`
+- 新增 `FFMPEG_PATH` 環境變數支援，可手動指定 `ffmpeg` 執行檔路徑
+
 ## 1.0.0 - 2026-04-24
 
 - 初次釋出 MP3BatchConverter

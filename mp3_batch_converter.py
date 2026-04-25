@@ -1,4 +1,5 @@
 import json
+import os
 import shutil
 import subprocess
 import sys
@@ -29,7 +30,7 @@ from PyQt6.QtWidgets import (
 
 APP_TITLE = "MP3 批量轉換工具"
 APP_DIR_NAME = "MP3BatchConverter"
-APP_VERSION = "1.0.0"
+APP_VERSION = "1.0.1"
 SUPPORTED_EXTENSIONS = {".mp3", ".wav", ".flac", ".m4a"}
 SAMPLE_RATES = ["22050", "32000", "44100", "48000"]
 BIT_RATES = ["32k", "64k", "96k", "128k", "160k", "192k", "256k", "320k"]
@@ -49,6 +50,12 @@ FFMPEG_INSTALL_HELP = (
     "  sudo apt update && sudo apt install ffmpeg\n\n"
     "安裝完成後，請重新開啟本程式。"
 )
+COMMON_FFMPEG_PATHS = [
+    "/opt/homebrew/bin/ffmpeg",
+    "/usr/local/bin/ffmpeg",
+    "/opt/local/bin/ffmpeg",
+    "/usr/bin/ffmpeg",
+]
 
 
 def get_storage_paths() -> Tuple[Path, Path]:
@@ -101,7 +108,22 @@ def save_config(config: dict) -> None:
 
 
 def find_ffmpeg() -> Optional[str]:
-    return shutil.which("ffmpeg")
+    configured_path = os.environ.get("FFMPEG_PATH", "").strip()
+    if configured_path:
+        candidate = Path(configured_path).expanduser()
+        if candidate.is_file() and os.access(candidate, os.X_OK):
+            return str(candidate)
+
+    discovered = shutil.which("ffmpeg")
+    if discovered:
+        return discovered
+
+    for candidate_text in COMMON_FFMPEG_PATHS:
+        candidate = Path(candidate_text)
+        if candidate.is_file() and os.access(candidate, os.X_OK):
+            return str(candidate)
+
+    return None
 
 
 def resolve_unique_path(path: Path) -> Path:

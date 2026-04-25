@@ -2,7 +2,7 @@
 
 一個以 Python 與 PyQt6 撰寫的 macOS GUI 批量音訊轉檔工具，適合把音樂檔轉成較低取樣率與位元率的 MP3，以配合特定播放裝置使用。
 
-目前版本：`1.0.0`
+目前版本：`1.0.1`
 
 ## 畫面預覽
 
@@ -97,4 +97,5 @@ python3 build_dmg.py
 ## 注意事項
 
 - 若 `ffmpeg` 不在系統路徑中，程式會顯示安裝方式提示
+- macOS 若由 Finder 啟動 `.app`，程式會額外檢查 Homebrew 常見安裝位置的 `ffmpeg`
 - 未經 Apple Developer 簽章的 `.app` 或 `.dmg` 在其他 Mac 上首次開啟時，可能會被 Gatekeeper 額外詢問
